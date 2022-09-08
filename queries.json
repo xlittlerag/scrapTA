@@ -1,0 +1,14 @@
+[
+  {
+    "from": "MDQ",
+    "to": "BA",
+    "searchDate": "11/09/2022",
+    "wantedDays": [
+      {
+        "day": "11",
+        "month": "09",
+        "year": "2022"
+      }
+    ]
+  }
+]

@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+		<title>Sofse Ventas</title>
+		<!-- CSS externo -->
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/vendor/css/animate.css">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/vendor/css/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/vendor/css/font-awesome/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/vendor/css/bootstrap/selectize.bootstrap3.css">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/vendor/css/datepicker/datepicker.css">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/vendor/css/owlcarousel/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/vendor/css/owlcarousel/owl.theme.default.css">
+
+		<!-- CSS propio -->
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/css/estilos_general.css?uniq=630554eca18a8">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/css/busqueda.css?uniq=630554eca18a8">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/css/mq.css?uniq=630554eca18a8">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/css/datepicker-custom.css?uniq=630554eca18a8">
+		<link rel="stylesheet" type="text/css" href="https://webventas.sofse.gob.ar/css/mobile.css?uniq=630554eca18a8">
+		
+		<script type="text/javascript" charset="utf-8">
+			var url_base = "aHR0cHM6Ly93ZWJ2ZW50YXMuc29mc2UuZ29iLmFyLw==";
+		</script>
+	</head>
+
+	<body class="w-100">
+
+		<!-- HEADER INSTITUCIONAL -->
+		<header>
+	<!-- LOGO Y USUARIO -->
+	<div class="cabecera row w-100">
+
+		<!-- MENU OPCION CON MODAL -->
+		<div class="col-12 pr-4 pl-4 pt-3 pb-0">
+			<img id="logo" width="180" height="50" src="https://webventas.sofse.gob.ar/img/operadora-ferroviaria.png" class="img-fluid">
+			<img id="logo" width="222" height="70" src="img/logo-ministerio.png" class="img-fluid float-right">
+		</div>
+		<div class="col-12">
+			<div id="dropdown_usuario" class="usuario float-right dropdown show">
+				<a href="" class="titulo_cuatro dropdown-toggle" id="login" data-is_login="0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bind="enable: !noResults();">
+					<i class="fa fa-user fa-lg" aria-hidden="true">
+													<span class="titulo_cinco pl-1">Inici&aacute; sesi&oacute;n o Registrate</span>
+											</i>
+					<i class="log-in fa fa-bars fa-lg"></i>
+				</a>
+				<div class="dropdown-menu-gral dropdown-menu dropdown-menu-right" aria-labelledby="login">
+
+					<!-- LOGIN -->
+										    <form id="form_login" method="POST" class="form_gral d-block controlar_errores" onsubmit="loginMail(this); return false;">
+				    		<legend class="titulo_form_gral">INICIÁ SESIÓN O REGISTRATE</legend>
+						 	<div class="form-group position-relative">
+						    	<label class="label_form_gral" for="alias_usuario">Correo Electrónico</label>
+						    	<input type="email" class="form-control input_color limpiable" id="alias_usuario" name="alias_usuario" aria-describedby="emailHelp">
+						    	<div class="invalid-tooltip align-text-top">
+									<i class="fa fa-caret-up fa-2x"></i>
+									<span>Ingresá correo electr&oacute;nico</span>
+								</div>
+						  	</div>
+						 	<div class="form-group position-relative">
+						   	<label class="label_form_gral" for="pass">Contrase&ntilde;a</label>
+						    	<input type="password" class="form-control input_color limpiable position-relative" id="pass">
+						    	<input type="hidden" class="input_color password_crypt limpiable" id="password" name="password">
+						    	<a class="titulo_form_dos form-text text-muted" id="pass_olvidada" onclick="mostrarForm('form_nueva_password');">¿Olvidaste tu contrase&ntilde;a?</a>
+								<div class="invalid-tooltip align-text-top">
+									<i class="fa fa-caret-up fa-2x"></i>
+									<span>Ingresá contrase&ntilde;a</span>
+								</div>
+						  	</div>
+						  	<div class="form-group mensaje_retorno d-none">
+						 		<span class="titulo_form_tres limpiable"></span>
+						 	</div>
+						  	<div class="form-group gSignInWrapper">
+							  	<label class="titulo_form_tres mr-sm-2" for="">Ingresa con Facebook o Google+</label>
+							  	<a id="btn_face" class="iconos_login" onclick="logInWithFacebook()"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+							  	<a id="btn_google" class="customGPlusSignIn iconos_login"><i class="fa fa-google-plus-square fa-2x"></i></a>
+							</div>
+							<div class="form-group"> 
+						 		<input type="submit" class="btn_gral btn btn-block" value="INGRESAR" for="form_login">
+						 		<legend class="titulo_form_uno">¿Aún no estás registrado/a?</legend>
+						 		<button type="button" class="btn_gral btn btn-block" onclick="mostrarForm('form_registro');">REGISTRATE</button>
+						 	</div>
+						</form>
+					
+					<!-- NUEVA PASSWORD -->
+				    <form id="form_nueva_password" method="POST" class="form_gral d-none" onsubmit="nuevaPassword(this); return false;">
+			    		<legend class="titulo_form_gral">NUEVA CONTRASE&Ntilde;A</legend>
+					 	<div class="form-group position-relative">
+					    	<label class="label_form_gral" for="mail">Correo Electrónico</label>
+					    	<input type="email" class="form-control input_color limpiable" aria-describedby="emailHelp" id="mail" name="mail">
+					    	<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingresá correo electr&oacute;nico</span>
+							</div>
+					  	</div>
+						<div class="form-group"> 
+					 		<input type="submit" class="btn_gral btn btn-block" value="GENERAR CONTRASE&Ntilde;A" for="form_login">
+					 		<button type="button" class="btn_gral secundario btn btn-block" onclick="ocultarForm('form_nueva_password');">CANCELAR</button>
+					 	</div>
+					 	<div class="form-group mensaje_retorno d-none">
+					 		<span class="titulo_form_tres limpiable"></span>
+					 	</div>
+					</form>
+
+					<!-- REGISTRO -->
+				    <form id="form_registro" class="form_gral d-none controlar_errores" onsubmit="registrarUsuarioWeb(this); return false;">
+			    		<legend class="titulo_form_gral">REGISTRATE</legend>
+			    		<div class="form-group mb-0 position-relative">
+					    	<label class="label_form_gral" for="nombre_registro">Nombre</label>
+					    	<input type="text" class="form-control input_color" id="nombre_registro" for="form_registro" name="nombre_registro">
+					    	<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingresá nombre</span>
+							</div>
+					  	</div>
+					  	<div class="form-group mb-0 position-relative">
+					    	<label class="label_form_gral" for="apellido_registro">Apellido</label>
+					    	<input type="text" class="form-control input_color" id="apellido_registro" for="form_registro" name="apellido_registro">
+					    	<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingresá apellido</span>
+							</div>
+					  	</div>
+					  	<div class="form-group mb-0 position-relative">
+					    	<label class="label_form_gral" for="dni_registro">DNI</label>
+					    	<input type="text" class="form-control input_color" id="dni_registro" for="form_registro" name="dni_registro">
+					    	<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingresá documento de idetificaci&oacute;n</span>
+							</div>
+					  	</div>
+					 	<div class="form-group mb-0 position-relative">
+					    	<label class="label_form_gral" for="mail_registro">Correo Electrónico</label>
+					    	<input type="email" class="form-control input_color" id="mail_registro" aria-describedby="emailHelp" for="form_registro" name="mail_registro">
+					    	<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingresá correo electr&oacute;nico</span>
+							</div>
+					  	</div>
+					  	<div class="form-group mb-0 position-relative">
+					    	<label class="label_form_gral" for="mail_registro2">Repetir Correo Electrónico</label>
+					    	<input type="email" class="form-control input_color" id="mail_registro2" aria-describedby="emailHelp">
+					    	<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Repetí correo electr&oacute;nico</span>
+							</div>
+					  	</div>
+					 	<div class="form-group position-relative">
+					   		<label class="label_form_gral" for="password_registro">Contraseña</label>
+					    	<input type="password" class="form-control input_color" id="pass_registro">
+					    	<input type="hidden" class="form-control input_color password_crypt" id="password_registro" for="form_registro" name="password_registro">
+					    	<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingrese contrase&ntilde;a</span>
+							</div>
+					  	</div>
+						<div class="form-group"> 
+					 		<input type="submit" class="btn_gral btn btn-block" value="REGISTRATE">
+					 		<button type="button" class="btn_gral secundario btn btn-block" onclick="ocultarForm('form_registro');">CANCELAR</button>
+					 	</div>
+					 	<div class="form-group mensaje_retorno d-none">
+					 		<span class="titulo_form_tres limpiable"></span>
+					 	</div>
+					</form>
+
+					<!-- MENU USUARIO WEB -->
+					<div id="menu_usuario" class="p-4 d-none">
+						<div class="container" style="cursor: default;">
+							<div class="row justify-content-center">
+								<div class="rounded-circle text-center text-white" style="background-color: #0080c5; font-size: 26px; width: 50px; height: 50px;">
+									<span class="iniciales align-middle"></span>
+								</div>
+							</div>
+							<div class="row justify-content-center text-center">
+								<a class="cuenta" style="cursor: default;"></a>
+							</div>
+						</div>
+						<a class="dropdown-item" id="opt_reimprimir_boleto"><i class="fa fa-angle-right"></i> Reimprimir el pasaje</a>
+					    <a class="dropdown-item" onclick="$('#cambiar_fecha_viaje').modal('show');"><i class="fa fa-angle-right"></i> Cambiar la fecha de viaje</a>					    
+					    <a class="dropdown-item"
+					    	onclick="limpiarContenedor($('#devolver_boleto'));
+					    			$('#devolver_boleto').modal('show');
+					    			mostrarAlerta('<span>Podés devolver tu pasaje dentro de los 90 días desde la fecha de compra aunque hayas realizado posteriormente cambios de fecha y/o de categoría.</span>',
+					    						false, function(){ $('.modal').modal('hide'); });">
+					    	<i class="fa fa-angle-right"></i> Devolver el pasaje
+					    </a>
+					    <a class="dropdown-item" onclick="limpiarContenedor($('#cambiar_password')); $('#cambiar_password').modal('show');"><i class="fa fa-angle-right"></i> Cambiar la contrase&ntilde;a</a>
+					    <button type="submit" class="btn_gral btn btn-block mt-2" onclick="cerrarSesion();">CERRAR SESIÓN</button>
+					</div>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL CAMBIAR PASSWORD -->
+	<div class="modal fade" id="cambiar_password" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<legend class="titulo_form_gral ml-4">CAMBIAR CONTRASE&Ntilde;A</legend>
+					<form id="form_cambio_password" method="POST" class="form_gral controlar_errores" onsubmit="cambiarPassword(this); return false;">
+						<div class="form-group mb-0 position-relative">
+							<label class="label_form_gral" for="pass_actual">Contrase&ntilde;a actual</label>
+							<input type="password" class="form-control input_color limpiable" id="pass_actual">
+							<input type="hidden" class="form-control input_color password_crypt" id="password_actual" name="password_actual">
+							<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingresá contrase&ntilde;a</span>
+							</div>
+						</div>
+						<div class="form-group mb-0 position-relative">
+							<label class="label_form_gral" for="pass_nueva">Nueva contrase&ntilde;a</label>
+							<input type="password" class="form-control input_color limpiable" id="pass_nueva">
+							<input type="hidden" class="form-control input_color password_crypt" id="password_nueva" name="password_nueva">
+							<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingresá nueva contrase&ntilde;a</span>
+							</div>
+						</div>
+						<div class="form-group position-relative">
+							<label class="label_form_gral" for="pass_nueva">Repetí la nueva contrase&ntilde;a</label>
+							<input type="password" class="form-control input_color limpiable" id="pass_nueva2">
+							<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Repetí la nueva contrase&ntilde;a</span>
+							</div>
+						</div>
+						<div class="form-group"> 
+							<button type="submit" class="btn_gral btn btn-block">CAMBIAR</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL CAMBIAR FECHA DE VIAJE -->
+	<div class="modal fade" id="cambiar_fecha_viaje" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<legend class="titulo_form_gral ml-4">CAMBIAR FECHA DE PASAJE</legend>
+					<form id="form_cambio_boleto" method="POST" action="https://webventas.sofse.gob.ar/calendario.php" class="form_gral controlar_errores">
+						<div class="form-group mb-0 position-relative">
+							<label class="label_form_gral" for="boleto_cambio">Nº Pasaje</label>
+							<input type="text" class="form-control input_color" id="boleto_cambio" name="cambio[boleto]">
+							<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingrese n&uacute;mero de boleto a cambiar</span>
+							</div>
+						</div>
+						<div class="form-group mb-0 position-relative">
+							<label class="label_form_gral" for="dni_boleto_cambio">DNI</label>
+							<input type="text" class="form-control input_color" id="dni_boleto_cambio" name="cambio[dni_boleto]">
+							<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingrese documento de idetificaci&oacute;n asociado al boleto a cambiar</span>
+							</div>
+						</div>
+						<div class="form-group position-relative">
+							<label class="label_form_gral" for="fecha_cambio">Nueva Fecha</label>
+							<input type="text" class="input_color form-control date" placeholder=" " id="fecha_cambio" name="cambio[fecha]" readonly>
+							<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Seleccioná la fecha para el nuevo pasaje</span>
+							</div>
+						</div>
+						<div class="form-group"> 
+							<button type="submit" class="btn_gral btn btn-block">CAMBIAR FECHA</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL DEVOLVER BOLETO -->
+	<div class="modal fade" id="devolver_boleto" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<legend class="titulo_form_gral ml-4">DEVOLVER PASAJE</legend>
+					<form id="form_devolucion_boleto" method="POST" class="form_gral controlar_errores">
+						<div class="form-group mb-0 position-relative">
+							<label class="label_form_gral" for="boleto_devolucion">Nº Pasaje</label>
+							<input type="text" class="form-control input_color limpiable" id="boleto_devolucion" name="devolucion[boleto]">
+							<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingrese n&uacute;mero de pasaje a devolver</span>
+							</div>
+						</div>
+						<div class="form-group position-relative">
+							<label class="label_form_gral" for="dni_boleto_devolucion">DNI</label>
+							<input type="text" class="form-control input_color limpiable" id="dni_boleto_devolucion" name="devolucion[dni_boleto]">
+							<div class="invalid-tooltip align-text-top">
+								<i class="fa fa-caret-up fa-2x"></i>
+								<span>Ingrese documento de idetificaci&oacute;n asociado al pasaje que desea devolver</span>
+							</div>
+						</div>
+						<div id="obtener_informacion" class="form-group m-auto text-center">
+							<i class="cargando fa fa-circle-o-notch fa-spin d-none"></i>
+							<button type="submit" class="btn_gral btn">CONTINUAR</button>
+							<button type="button" class="btn_gral secundario btn">CANCELAR</button>
+						</div>
+						<div id='boleto_usuario' class="table-responsive table-sm d-none">
+							<label class="label_form_gral" for="boleto_detalle">Informaci&oacute;n del pasaje a Devolver</label>
+							<table class="table mt-3 datos_boletos_usuario" id="boleto_detalle">
+
+							  	<thead class="text-center">
+								    <tr>
+								    	<th scope="col" class="cabecera_datos">Nº PASAJE</th>
+								    	<th scope="col" class="cabecera_datos">FECHA y HORA SALIDA</th>
+									    <th scope="col" class="cabecera_datos">ORIGEN</th>
+									    <th scope="col" class="cabecera_datos">DESTINO</th>
+									    <th scope="col" class="cabecera_datos">PASAJERO/A</th>
+									    <th scope="col" class="cabecera_datos">DNI PASAJERO/A</th>
+									    <th scope="col" class="cabecera_datos">IMPORTE</th>
+									    <th scope="col" class="cabecera_datos">A DEVOLVER</th>
+									</tr>
+								</thead>
+
+								<tbody class="text-center">
+								  	<!--DATOS DEL BOLETO-->
+								  	<tr class="boleto">
+								  		<td class="boleto"></td>
+										<td class="fecha_embarque"></td>
+										<td class="origen"></td>
+										<td class="destino"></td>
+										<td class="pasajero"></td>
+										<td class="dni_pasajero"></td>
+										<td class="importe_total"></td>
+										<td class="importe_a_devolver"></td>
+									</tr>
+									<tr class="acompaniante d-none"><td colspan=8>Acompa&ntilde;ante</td></tr>
+									<tr class="boleto_acomp d-none">
+								  		<td class="boleto"></td>
+										<td class="fecha_embarque"></td>
+										<td class="origen"></td>
+										<td class="destino"></td>
+										<td class="pasajero"></td>
+										<td class="dni_pasajero"></td>
+										<td>&nbsp;</td>
+										<td>&nbsp;</td>
+									</tr>
+								</tbody>
+
+							</table>
+						</div>
+						<div id='cobros_boleto_usuario' class="table-responsive table-sm d-none">
+							<label class="label_form_gral" for="boleto_cobros_detalle">Informaci&oacute;n de los cobros involucrados</label>
+							<table class="table mt-3 datos_boletos_usuario" id="boleto_cobros_detalle">
+
+							  	<thead class="text-center">
+								    <tr>
+								    	<th scope="col" class="cabecera_datos">Nº TRANSACCION</th>
+								    	<th scope="col" class="cabecera_datos">FECHA y HORA</th>
+									    <th scope="col" class="cabecera_datos">IMPORTE A DEVOLVER</th>
+									</tr>
+								</thead>
+
+								<tbody class="text-center">
+								  	<!--DATOS DEL BOLETO-->
+								  	<tr class="cobro-base d-none">
+								  		<td class="id_transaccion"></td>
+										<td class="fecha_transaccion"></td>
+										<td class="importe_a_devolver_transaccion"></td>
+									</tr>
+									<tr class="cobro-base error d-none">
+								  		<td class="id_transaccion"></td>
+										<td class="error_msg" colspan="2"></td>
+									</tr>
+								</tbody>
+
+							</table>
+						</div>
+						<div id="mensaje_error" class="error m-auto text-center d-none">
+							<span></span>
+						</div>
+						<div id="devolver" class="form-group m-auto text-center d-none">
+							<i class="cargando fa fa-circle-o-notch fa-spin d-none"></i>
+							<button type="submit" class="btn_gral btn" disabled>DEVOLVER PASAJE</button>
+							<button type="button" class="btn_gral secundario btn">CANCELAR</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL IMPRIMIR RECIBO -->
+	<div class="modal fade" id="imprimir_recibo" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<legend class="titulo_form_gral">IMPRIMIR RECIBO</legend>
+					<p class="pt-3 pb-3 mensaje">La operaci&oacute;n fue realizada con éxito, por favor imprima el recibo.</p>
+					<div class="form-group mt-3 mb-3 text-center">
+						<a id="btn_imprimir_recibo" href="https://webventas.sofse.gob.ar/core/boletos/recibo.php" class="btn btn_gral">IMPRIMIR RECIBO</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- MODAL REIMPRIMIR BOLETOS -->
+	<div class="modal fade" id="reimprimir_boleto" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<legend class="titulo_form_gral">REIMPRIMIR PASAJE</legend>
+					<form id="reimpresion_boletos" method='POST' action="https://webventas.sofse.gob.ar/core/boletos/reimprimir_boletos.php">
+						<div class="table-responsive table-sm mt-3 mb-3" style="max-height: 400px;">
+							<table class="table datos_boletos_usuario" id='boletos_usuario'>
+
+							  	<thead class="text-center">
+								    <tr>
+								    	<th scope="col" class="cabecera_datos"></th>
+								    	<th scope="col" class="cabecera_datos">Nº PASAJE</th>
+								    	<th scope="col" class="cabecera_datos">FECHA y HORA SALIDA</th>
+									    <th scope="col" class="cabecera_datos">ORIGEN</th>
+									    <th scope="col" class="cabecera_datos">DESTINO</th>
+									    <th scope="col" class="cabecera_datos">PASAJERO/A</th>
+									    <th scope="col" class="cabecera_datos">DNI PASAJERO/A</th>
+									</tr>
+								</thead>
+
+								<tbody class="text-center">
+								  	<!--DATOS DEL BOLETO-->
+								  	<tr class="boleto-base d-none">
+								  		<td class="contenedor-selector-boleto">
+											<input type="checkbox"/>
+											<label><span></span></label>
+										</td>
+								  		<td class="boleto"></td>
+										<td class="fecha_embarque"></td>
+										<td class="origen"></td>
+										<td class="destino"></td>
+										<td class="pasajero"></td>
+										<td class="dni_pasajero"></td>
+									</tr>
+								</tbody>
+
+							</table>
+						</div>
+						<div class="form-group text-center"> 
+							<button type="submit" class="btn_gral btn d-none">IMPRIMIR</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- SLIDER -->
+	<div id="destinos" class="carousel slide" data-ride="carousel">
+		<ol class="carousel-indicators">
+		    <li data-target="#destinos" data-slide-to="0" class="active"></li>
+		    <li data-target="#destinos" data-slide-to="1"></li>
+		    <li data-target="#destinos" data-slide-to="2"></li>
+		    <li data-target="#destinos" data-slide-to="3"></li>
+		    <!-- <li data-target="#destinos" data-slide-to="4"></li> -->
+		    <!-- <li data-target="#destinos" data-slide-to="5"></li> -->
+		    <!-- <li data-target="#destinos" data-slide-to="6"></li> -->
+		    <!-- <li data-target="#destinos" data-slide-to="7"></li> -->
+		</ol>
+
+	  	<div class="carousel-inner">
+			<div class="carousel-item active">
+  				<div class="slider_destinos img_slider_uno img-fluid"></div>
+			  	<!-- <div class="carousel-caption-slider fadeInRight">
+			    	<h4>Buenos Aires - Mar del Plata</h4>
+			    	<h6>Coche comedor con servicio a bordo</h6>
+			  	</div> -->
+			</div>
+			
+
+			<!-- <div class="carousel-item">
+				<div class=""></div>
+			  	<div class="carousel-caption-slider">
+			    	<h4>Viajá a Junín en tren</h4>
+			    	<h6>&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+			  	</div>
+			</div> -->
+
+			<div class="carousel-item">
+  				<div class="slider_destinos img_slider_tres"></div>
+			  	<!-- <div class="carousel-caption-slider">
+			    	<h4>Viajá a Bahía Blanca en tren</h4>
+			    	<h6>Tres servicios por semana</h6>
+			  	</div> -->
+			</div>
+
+			<div class="carousel-item">
+  				<div class="slider_destinos img_slider_cuatro"></div>
+			  	<!-- <div class="carousel-caption-slider">
+			    	<h4>Buenos Aires - Tucumán</h4>
+			    	<h6>Servicio de camarotes a bordo</h6>
+			  	</div> -->
+			</div>
+
+			<!-- <div class="carousel-item">
+  				<div class="slider_destinos img_slider_cinco"></div>
+			  	<div class="carousel-caption-slider">
+			    	<h4>Buenos Aires - Junín</h4>
+			    	<h6>Pasajes desde $250</h6>
+			  	</div>
+			</div> -->
+
+			<!-- <div class="carousel-item">
+  				<div class="slider_destinos img_slider_seis"></div>
+			  	<div class="carousel-caption-slider">
+			    	<h4>Buenos Aires - Córdoba</h4>
+			    	<h6>Servicio de coche comedor a bordo</h6>
+			  	</div>
+			</div> -->
+
+			<div class="carousel-item">
+  				<div class="slider_destinos img_slider_siete"></div>
+			  <!-- 	<div class="carousel-caption-slider">
+			    	<h4>Trenes a Rosario</h4>
+			    	<h6>Servicio de coche comedor a bordo</h6>
+			  	</div> -->
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- FORM DE BUSQUEDA -->
+			<form id="form_busqueda" method="POST" action="https://webventas.sofse.gob.ar/calendario.php" class="form_busqueda_servicios controlar_errores row mx-auto">			
+
+			<div class="container">
+
+				<div class="row pl-2 pr-2 pb-1">
+					<legend class="titulo_form_gral pr-1 pl-1">BUSCÁ TU PASAJE</legend>
+				</div>
+
+				<div class="row pl-2 pr-2 pb-1">
+					<div class="col-6 pr-1 pl-1">
+				      	<div class="d-inline">
+				      	 	<input type="radio" id="ida" name="busqueda[tipo_viaje]" value="1" checked>
+							<label for="ida"><span>&nbsp;</span></label>
+						</div>
+						<label class="label_form_gral d-inline font-weight-bold" for="ida"><b>IDA</b></label>
+				    </div>
+				    <div class="col-6 pr-1 pl-1">
+				      	<div class="d-inline">
+				      	 	<input type="radio" id="ida_vuelta" name="busqueda[tipo_viaje]" value="2">
+							<label for="ida_vuelta"><span>&nbsp;</span></label>
+						</div>
+						<label class="label_form_gral d-inline font-weight-bold" for="ida_vuelta"><b>IDA Y VUELTA</b></label>
+				    </div>
+			    </div>
+
+		    <div class=" row pl-2 pr-2 pb-1">
+				<div class="col-xl col-md col-sm pr-1 pl-1">
+					<label class="label_form_gral" for="origen">Origen</label>
+					<input type="text" class="input_color form-control recorrido" id="origen" name="busqueda[origen]">
+					<div class="invalid-tooltip align-text-top">
+						<i class="fa fa-caret-up fa-2x"></i>
+						<span>Seleccioná el origen</span>
+					</div>
+				</div>
+				<div class="col-xl col-md col-sm pr-1 pl-1">
+					<label class="label_form_gral" for="destino">Destino</label>
+					<input type="text" class="input_color form-control recorrido" id="destino" name="busqueda[destino]">
+					<div class="invalid-tooltip align-text-top">
+						<i class="fa fa-caret-up fa-2x"></i>
+						<span>Seleccioná el destino</span>
+					</div>
+				</div>
+			</div>
+
+			<div class=" row pl-2 pr-2 pb-1">
+				<div class="col-xl col-md col-sm pr-1 pl-1">
+					<label class="label_form_gral" for="fecha_ida">Fecha de Ida</label>
+					<input type="text" class="input_color form-control date" placeholder=" " id="fecha_ida" name="busqueda[fecha_ida]" readonly>
+					<div class="invalid-tooltip align-text-top">
+						<i class="fa fa-caret-up fa-2x"></i>
+						<span>Seleccioná la fecha para la ida</span>
+					</div>
+				</div>
+				<div class="col-xl col-md col-sm pr-1 pl-1">
+					<label class="label_form_gral" for="fecha_vuelta">Fecha de Vuelta</label>
+					<input type="text" class="input_color form-control date" placeholder=" " id="fecha_vuelta" name="busqueda[fecha_vuelta]" readonly>
+					<div class="invalid-tooltip align-text-top">
+						<i class="fa fa-caret-up fa-2x"></i>
+						<span>Seleccioná la fecha para la vuelta</span>
+					</div>
+				</div>			
+			</div>
+
+			<div class="row pl-2 pr-2 pb-1">
+				<div class="col-xl col-md col-sm-12 pl-1 pr-1">
+					<label class="label_form_gral" for="adulto">Adultos/as</label>
+					<div class="tooltip_general">
+						<select class="form-control px-0" id="adulto" name="busqueda[cantidad_pasajeros][adulto]">
+							<option value="0" selected>0</option>
+																								<!-- <option value="0">0</option> -->
+																																<!-- <option value="1" selected>1</option> -->
+																																<!-- <option value="2">2</option> -->
+																																<!-- <option value="3">3</option> -->
+																																<!-- <option value="4">4</option> -->
+																																<!-- <option value="5">5</option> -->
+																																<!-- <option value="6">6</option> -->
+																																<!-- <option value="7">7</option> -->
+																																<!-- <option value="8">8</option> -->
+																				    </select>
+					    <span class="texto_tooltip w-100">
+							<p class="m-0 p-0">+ 13 años</p>
+						</span>
+					</div>
+				</div>
+				<div class="col-xl col-md col-sm-12 pl-1 pr-1">
+					<label class="label_form_gral" for="jubilado">Jubilados/as</label>
+					<div class="tooltip_general">
+						<select class="form-control px-0" id="jubilado" name="busqueda[cantidad_pasajeros][jubilado]">
+							<option value="0" selected>0</option>
+					      									<!-- <option value="1">1</option> -->
+															<!-- <option value="2">2</option> -->
+															<!-- <option value="3">3</option> -->
+															<!-- <option value="4">4</option> -->
+															<!-- <option value="5">5</option> -->
+															<!-- <option value="6">6</option> -->
+															<!-- <option value="7">7</option> -->
+															<!-- <option value="8">8</option> -->
+												    </select>
+					    <!-- <span class="texto_tooltip w-100">
+							<p class="m-0 p-0">+ 13 años</p>
+						</span> -->
+					</div>
+				</div>
+
+				<!-- DISCAPACITADO -->
+				<div class="col-xl col-md col-sm-12 pl-1 pr-1">
+					<label class="label_form_gral" for="discapacitado">Benef. CUD</label>
+					<div class="tooltip_general">
+						<select class="form-control px-0" id="discapacitado" name="busqueda[cantidad_pasajeros][discapacitado]">
+							<option value="0" selected>0</option>
+					      									<option value="1">1</option>
+															<option value="2">2</option>
+															<option value="3">3</option>
+															<option value="4">4</option>
+															<option value="5">5</option>
+												    </select>
+					    <!-- <span class="texto_tooltip w-100">
+							<p class="m-0 p-0">+ 13 años</p>
+						</span> -->
+					</div>
+				</div>
+				<!--  -->
+				<div class="col-xl col-md col-sm-12 pl-1 pr-1">
+					<label class="label_form_gral" for="menor">Ni&ntilde;os/as</label>
+					<div class="tooltip_general">
+						<select class="form-control px-0" id="menor" name="busqueda[cantidad_pasajeros][menor]">
+							<option value="0" selected>0</option>
+					      									<!-- <option value="1">1</option> -->
+															<!-- <option value="2">2</option> -->
+															<!-- <option value="3">3</option> -->
+															<!-- <option value="4">4</option> -->
+															<!-- <option value="5">5</option> -->
+															<!-- <option value="6">6</option> -->
+															<!-- <option value="7">7</option> -->
+															<!-- <option value="8">8</option> -->
+												    </select>
+						<span class="texto_tooltip w-100">
+							<p class="m-0 p-0">3 a 12 años</p>
+						</span>
+					</div>
+				</div>
+
+				<div class="col-xl col-md col-md col-sm-12 pl-1 pr-1">
+					<label class="label_form_gral" for="bebe">Beb&eacute;s</label>
+					<div class="tooltip_general">
+						<select class="form-control px-0" id="bebe" name="busqueda[cantidad_pasajeros][bebe]">
+					      	<option value="0" selected>0</option>
+					      									<!-- <option value="1">1</option> -->
+															<!-- <option value="2">2</option> -->
+															<!-- <option value="3">3</option> -->
+															<!-- <option value="4">4</option> -->
+															<!-- <option value="5">5</option> -->
+															<!-- <option value="6">6</option> -->
+															<!-- <option value="7">7</option> -->
+															<!-- <option value="8">8</option> -->
+												    </select>
+				        <span class="texto_tooltip w-100">
+				    		<p class="m-0 p-0">0 a 3 años</p>
+				    	</span>
+				    </div>
+				</div>
+			</div>
+			
+			<div class="row pl-2 pr-2 pb-1">
+				<div class="col-xl col-md col-sm-12 pl-1 pr-1">
+					<span class="lnk" id="info_cud">Info importante CUD</span>
+				</div>
+			</div>
+
+			<div class=" row pl-2 pr-2 pb-1">
+				<div class="col-xl col-sm col-md pl-1 pr-1">
+					<label class="d-block"></label>
+					<button type="submit" class="btn_gral btn btn-block">BUSCAR SERVICIOS</button>
+				</div>	
+			</div>
+
+			</div>
+		</form>
+	</header>
+		<!-- NAV AVANCE DE COMPRA -->
+		<!-- AVANCE DE COMPRA PARA MONITORES Y TABLET-->
+<section class="nav_avance_compra web">
+	<ul class="nav nav-pills nav-fill justify-content-xl-between justify-content-lg-between justify-content-md-between justify-content-sm-between">
+		<li class="text-center iconos_pasos activo">
+			<img src="https://webventas.sofse.gob.ar/img/calendario.svg">
+			<p>CALENDARIO</p>
+		</li>
+		<li class="text-center iconos_pasos ">
+			<img src="https://webventas.sofse.gob.ar/img/servicios.svg">
+			<p>SERVICIO</p>
+		</li>	  
+		<li class="text-center iconos_pasos ">
+			<img src="https://webventas.sofse.gob.ar/img/pasajeros.svg">
+			<p>PASAJEROS/AS</p>
+		</li>
+		<li class="text-center iconos_pasos ">
+			<img src="https://webventas.sofse.gob.ar/img/asientos.svg">
+			<p>ASIENTOS</p>
+		</li>
+		<li class="text-center iconos_pasos ">
+			<img src="https://webventas.sofse.gob.ar/img/terminos.svg">
+			<p>T&Eacute;RMINOS</p>
+		</li>
+		<li class="text-center iconos_pasos ">
+			<img src="https://webventas.sofse.gob.ar/img/pago.svg">
+			<p>PAGO</p>
+		</li>
+		<li class="text-center iconos_pasos ">
+			<img src="https://webventas.sofse.gob.ar/img/imprimir.svg">
+			<p>IMPRIMIR</p>
+		</li>
+	</ul>
+</section>
+
+<!-- AVANCE DE COMPRA PARA MOBILE -->
+
+<section class="nav_avance_compra mobile">
+	<nav aria-label="breadcrumb" class="p-0">
+		<ol class="breadcrumb p-0">
+		<li class="breadcrumb-item active" aria-current = "page"><a>Calendario</a></li>
+																				</ol>
+	</nav>
+</section>
+		<form id="form_calendario" method="POST" action="https://webventas.sofse.gob.ar/servicio.php">
+
+			<section class="seccion_general mx-0"> <!-- COMIENZA SECCION GENERAL -->
+
+				<!--TITULO Y LINEA DE SEPARACION -->
+				<section class="w-100 linea_secciones">
+					<h2 class="titulo_secciones">TRENES IDA -<b> BUENOS AIRES&nbsp;&nbsp;&nbsp;A&nbsp;&nbsp;&nbsp;MAR DEL PLATA</b></h2>
+					<div class="linea_separar_mini"></div>
+					<div class="linea_separar"></div>
+				</section>
+				
+				<!--CALENDARIO IDA -->
+				<section class="calendario ida" id="calendario_ida">
+					<div class="fechas">
+																																																																																																						</div>
+					<div class="web">
+						<div class="d-flex flex-wrap justify-content-start">
+					
+																				            <div class="p-1">
+									<div class="dia_no_disponible">
+										<div class="py-2">
+											<div class="pb-3">
+												<span class="dia_numero_no_disponible">JUE 25 AGO</span>
+												</div>
+																							<span class="texto_no_disponible">NO DISPONIBLE</span>
+																					</div>
+									</div>
+					            </div>
+					        													            <div class="p-1">
+									<div class="dia_no_disponible">
+										<div class="py-2">
+											<div class="pb-3">
+												<span class="dia_numero_no_disponible">VIE 26 AGO</span>
+												</div>
+																							<span class="texto_no_disponible">NO DISPONIBLE</span>
+																					</div>
+									</div>
+					            </div>
+					        													            <div class="p-1">
+									<div class="dia_no_disponible">
+										<div class="py-2">
+											<div class="pb-3">
+												<span class="dia_numero_no_disponible">SAB 27 AGO</span>
+												</div>
+																							<span class="texto_no_disponible">NO DISPONIBLE</span>
+																					</div>
+									</div>
+					            </div>
+					        													            <div class="p-1">
+									<div class="dia_no_disponible">
+										<div class="py-2">
+											<div class="pb-3">
+												<span class="dia_numero_no_disponible">DOM 28 AGO</span>
+												</div>
+																							<span class="texto_no_disponible">NO DISPONIBLE</span>
+																					</div>
+									</div>
+					            </div>
+					        													            <div class="p-1">
+									<div class="dia_no_disponible">
+										<div class="py-2">
+											<div class="pb-3">
+												<span class="dia_numero_no_disponible">LUN 29 AGO</span>
+												</div>
+																							<span class="texto_no_disponible">NO DISPONIBLE</span>
+																					</div>
+									</div>
+					            </div>
+					        													            <div class="p-1">
+									<div class="dia_no_disponible">
+										<div class="py-2">
+											<div class="pb-3">
+												<span class="dia_numero_no_disponible">MAR 30 AGO</span>
+												</div>
+																							<span class="texto_no_disponible">NO DISPONIBLE</span>
+																					</div>
+									</div>
+					            </div>
+					        													            <div class="p-1">
+									<div class="dia_no_disponible">
+										<div class="py-2">
+											<div class="pb-3">
+												<span class="dia_numero_no_disponible">MIE 31 AGO</span>
+												</div>
+																							<span class="texto_no_disponible">NO DISPONIBLE</span>
+																					</div>
+									</div>
+					            </div>
+					        					
+						</div>
+
+					</div>
+
+					<!--Calendario version mobile-->
+					<div class="mobile">
+
+																	            <div class="p-1">
+								<div class="dia_no_disponible ml-0 mr-0 mt-0 mb-2 p-1 row">
+									
+									<div class="col-2 my-1 mr-0 p-0">
+																					<span>&nbsp;</span>
+																			</div>
+
+
+									<span class="dia_numero_no_disponible col-4 text-left p-0">
+										<p class="my-2 mx-0">JUE 25 AGO</p>
+									</span>
+									
+																			<span class="no_disponibles col-6 text-center p-0">
+											<p class="m-0">NO DISPONIBLE</p>
+										</span>
+									
+								</div>
+				            </div>
+				        											            <div class="p-1">
+								<div class="dia_no_disponible ml-0 mr-0 mt-0 mb-2 p-1 row">
+									
+									<div class="col-2 my-1 mr-0 p-0">
+																					<span>&nbsp;</span>
+																			</div>
+
+
+									<span class="dia_numero_no_disponible col-4 text-left p-0">
+										<p class="my-2 mx-0">VIE 26 AGO</p>
+									</span>
+									
+																			<span class="no_disponibles col-6 text-center p-0">
+											<p class="m-0">NO DISPONIBLE</p>
+										</span>
+									
+								</div>
+				            </div>
+				        											            <div class="p-1">
+								<div class="dia_no_disponible ml-0 mr-0 mt-0 mb-2 p-1 row">
+									
+									<div class="col-2 my-1 mr-0 p-0">
+																					<span>&nbsp;</span>
+																			</div>
+
+
+									<span class="dia_numero_no_disponible col-4 text-left p-0">
+										<p class="my-2 mx-0">SAB 27 AGO</p>
+									</span>
+									
+																			<span class="no_disponibles col-6 text-center p-0">
+											<p class="m-0">NO DISPONIBLE</p>
+										</span>
+									
+								</div>
+				            </div>
+				        											            <div class="p-1">
+								<div class="dia_no_disponible ml-0 mr-0 mt-0 mb-2 p-1 row">
+									
+									<div class="col-2 my-1 mr-0 p-0">
+																					<span>&nbsp;</span>
+																			</div>
+
+
+									<span class="dia_numero_no_disponible col-4 text-left p-0">
+										<p class="my-2 mx-0">DOM 28 AGO</p>
+									</span>
+									
+																			<span class="no_disponibles col-6 text-center p-0">
+											<p class="m-0">NO DISPONIBLE</p>
+										</span>
+									
+								</div>
+				            </div>
+				        											            <div class="p-1">
+								<div class="dia_no_disponible ml-0 mr-0 mt-0 mb-2 p-1 row">
+									
+									<div class="col-2 my-1 mr-0 p-0">
+																					<span>&nbsp;</span>
+																			</div>
+
+
+									<span class="dia_numero_no_disponible col-4 text-left p-0">
+										<p class="my-2 mx-0">LUN 29 AGO</p>
+									</span>
+									
+																			<span class="no_disponibles col-6 text-center p-0">
+											<p class="m-0">NO DISPONIBLE</p>
+										</span>
+									
+								</div>
+				            </div>
+				        											            <div class="p-1">
+								<div class="dia_no_disponible ml-0 mr-0 mt-0 mb-2 p-1 row">
+									
+									<div class="col-2 my-1 mr-0 p-0">
+																					<span>&nbsp;</span>
+																			</div>
+
+
+									<span class="dia_numero_no_disponible col-4 text-left p-0">
+										<p class="my-2 mx-0">MAR 30 AGO</p>
+									</span>
+									
+																			<span class="no_disponibles col-6 text-center p-0">
+											<p class="m-0">NO DISPONIBLE</p>
+										</span>
+									
+								</div>
+				            </div>
+				        											            <div class="p-1">
+								<div class="dia_no_disponible ml-0 mr-0 mt-0 mb-2 p-1 row">
+									
+									<div class="col-2 my-1 mr-0 p-0">
+																					<span>&nbsp;</span>
+																			</div>
+
+
+									<span class="dia_numero_no_disponible col-4 text-left p-0">
+										<p class="my-2 mx-0">MIE 31 AGO</p>
+									</span>
+									
+																			<span class="no_disponibles col-6 text-center p-0">
+											<p class="m-0">NO DISPONIBLE</p>
+										</span>
+									
+								</div>
+				            </div>
+				        
+					</div>
+				
+				</section>
+				
+								<!-- LISTADO DE BOLETERIAS -->
+				<section class="linea_secciones">	
+
+					<!-- <a data-toggle="modal" data-target="#boleterias"> -->
+					<a href="https://www.argentina.gob.ar/transporte/trenes-argentinos/boleterias-habilitadas-para-compra-de-pasajes-de-larga-distancia-y" target="_blank">
+						<h5 class="titulo_dos">* LISTADO DE BOLETERÍAS</h5>
+					</a>	
+
+					<!-- MODAL LISTADO DE BOLETERÍAS -->
+					<div class="modal fade" id="boleterias" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+							<div class="modal-content">
+								<div class="modal-header">	        
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<legend class="titulo_form_gral">LISTADO DE BOLETERÍAS</legend>
+									<img src="img/horarios_boleterias_ld_22-8.jpg" class="w-100">
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</section>		
+
+				<!-- BOTON CONTINUAR -->
+				<section class="mt-5 col-12">
+					<div class="btn_footer d-flex justify-content-center">
+						<button id="continuar_compra" type="submit" for="form_calendario" class="btn_gral btn m-1">CONTINUAR</button>
+						<a href="https://webventas.sofse.gob.ar/index.php" class="btn_gral btn secundario m-1">CANCELAR</a>
+					</div>
+				</section>
+
+			</section> <!-- FIN SECCION GENERAL -->
+
+		</form>
+
+		<!-- FOOTER INSTITUCIONAL -->
+		<footer>
+	<p>© 2020 Operadora Ferroviaria Sociedad del Estado | Av. Dr. Ramos Mejía 1302, 4°, CABA (CP 1104) | Tel. (54-11) 3220-6300 | Argentina</p>
+	<p>Trenes Argentinos está exceptuada de emitir factura por la prestación de servicio de transporte público de pasajeros (comprende la Venta de Tarjetas SUBE). RG AFIP 1415/2003  y modif (Anexo I, Título A, inc. e).</p>
+</footer>
+		<!-- MODAL PARA ALERTA DE ERRORES -->
+		<!-- Modal -->
+
+<div class="modal fade" id="modal_alerta" tabindex="-1" role="dialog" aria-labelledby="titulo_alerta" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal_header_alerta">
+                <button type="button" class="close pl-3 pr-3 pt-3 pb-0" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> 
+                <div class="mb-3 mt-3">
+                    <i class="fa fa-exclamation-circle"></i>
+                    <h2 id="titulo_alerta"></h2>
+                </div>
+            </div>
+            <div class="modal-body p-4"> 
+                <p class="m-0 mensaje_alerta"></p>
+            </div>
+            <div class="modal-button m-auto pb-4">
+                <button type="button" class="modal_aceptar btn_gral btn">ACEPTAR</button>
+                <button type="button" class="modal_cancelar btn_gral btn d-none">CANCELAR</button>
+            </div>
+        </div>
+    </div>
+</div>
+		<!-- Javasript externo -->
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/vendor/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/vendor/js/popper.min.js"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/vendor/js/bootstrap/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/vendor/js/owlcarousel/owl.carousel.js"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/vendor/js/crypt/sha256.js"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/vendor/js/datepicker/locales/es-AR.min.js"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/vendor/js/datepicker/datepicker.js"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/vendor/js/selectize.min.js"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/vendor/js/moment.min.js"></script>
+
+		<!-- Global site tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-QFTZSXX3LJ"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/gs.js?uniq=630554eca18a8"></script>
+
+		<!-- Google Login -->
+		<script src="https://apis.google.com/js/api:client.js"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/login_google.js?uniq=630554eca18a8"></script>
+		<!-- Facebook Login -->
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/login_facebook.js?uniq=630554eca18a8"></script>
+
+		<!-- Javasript propio -->
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/helpers.js?uniq=630554eca18a8"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/configuraciones.js?uniq=630554eca18a8"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/errores.js?uniq=630554eca18a8"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/login.js?uniq=630554eca18a8"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/reimpresion_boletos.js?uniq=630554eca18a8"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/devolucion_boleto.js?uniq=630554eca18a8"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/cambio_boleto.js?uniq=630554eca18a8"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/busqueda.js?uniq=630554eca18a8"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/busqueda_cambio.js?uniq=630554eca18a8"></script>
+		<script type="text/javascript" src="https://webventas.sofse.gob.ar/js/calendario.js?uniq=630554eca18a8"></script>
+
+	</body>
+
+</html>
