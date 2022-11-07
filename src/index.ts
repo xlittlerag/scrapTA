@@ -11,7 +11,8 @@ const notifier = POST_URL ? new PostNotifier(POST_URL) : new ConsoleNotifier();
 
 const queries: Query[] = json_queries;
 
-await Promise.all(queries.map(processQuery))
+(await Promise.all(queries.map(processQuery))).every((response: boolean) => response == true)
+|| console.log("No tickets found")
 
 async function processQuery(q: Query): Promise<boolean> {
   const ticketStatus: TicketStatus = await checkAvailableTickets(
