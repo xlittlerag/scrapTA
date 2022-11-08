@@ -37,7 +37,7 @@ async function processQuery(q: Query): Promise<boolean> {
     q.wantedDays,
   );
   if (ticketStatus.availableTickets.length != 0) {
-    notifiers.map(async (notifier) =>
+    notifiers.forEach(async (notifier) =>
       await notifier.notify(
         `${citiesMap.getCityName(ticketStatus.fromCity)} a ${
           citiesMap.getCityName(ticketStatus.toCity)
