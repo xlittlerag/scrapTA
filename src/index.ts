@@ -8,7 +8,8 @@ import {
 import { checkAvailableTickets } from "../lib/scraping.ts";
 import { Query, TicketStatus } from "../lib/types.ts";
 import { citiesMap } from "../lib/utils.ts";
-import json_queries from "../queries.json" assert { type: "json" };
+import input from "../input.json" assert { type: "json" };
+import buildQueries from "../lib/queryBuilder.ts";
 
 const POST_URL = Deno.env.get("POST_URL");
 if (!(POST_URL)) {
@@ -22,12 +23,12 @@ const notifiers: INotifier[] = [
 ];
 POST_URL && notifiers.push(new PostNotifier(POST_URL));
 
-const queries: Query[] = json_queries;
+const queries: Query[] = buildQueries(input);
 
 (await Promise.all(queries.map(processQuery))).every((response: boolean) =>
   response == true
 ) ||
-  console.log("No tickets found");
+  console.log("[Info] No tickets found");
 
 async function processQuery(q: Query): Promise<boolean> {
   const ticketStatus: TicketStatus = await checkAvailableTickets(
