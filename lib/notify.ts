@@ -23,10 +23,9 @@ export class PostNotifier implements INotifier {
 
 export class NativeNotifier implements INotifier {
   notify(message: string): boolean {
-    new Notification({ linux: true, windows: true })
+    new Notification()
       .title("Ticket Alert")
       .body(message)
-      .timeout(60000)
       .show();
     return true;
   }
