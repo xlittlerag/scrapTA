@@ -37,7 +37,7 @@ function optimizeSearch(dates: string[]): { search: string; wanted: Day[] }[] {
     ) {
       const middle = new Date(
         pack[0].getTime() +
-          (pack[pack.length - 1].getTime() - pack[pack.length - 1].getTime()) /
+          (pack.at(-1).getTime() - pack[0].getTime()) /
             2,
       );
       searchAndWanted[index++] = {
