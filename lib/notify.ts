@@ -6,15 +6,13 @@ export class PostNotifier implements INotifier {
   constructor(private post_endpoint: string) {}
 
   async notify(message: string): Promise<boolean> {
-    const response = await fetch(
+    await fetch(
       this.post_endpoint,
       {
         method: "POST",
         body: message,
       },
     );
-    console.log(response);
-
     return true;
   }
 }
@@ -24,8 +22,8 @@ export class NativeNotifier implements INotifier {
     Deno.run({
       cmd: [
         "notify-send",
-        '-t "60000"',
-        '-a "Train Alert"',
+        "-t",
+        "60000",
         "Train Alert",
         message,
       ],

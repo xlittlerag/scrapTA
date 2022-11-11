@@ -1,4 +1,4 @@
-#!/bin/env -S deno run --allow-net --allow-env --allow-read --allow-ffi --unstable
+#!/bin/env -S deno run -A --unstable
 import {
   ConsoleNotifier,
   INotifier,
