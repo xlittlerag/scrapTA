@@ -1,5 +1,3 @@
-import { Notification } from "https://deno.land/x/deno_notify@1.3.1/ts/mod.ts";
-
 export interface INotifier {
   notify(message: string): boolean | Promise<boolean>;
 }
@@ -23,10 +21,15 @@ export class PostNotifier implements INotifier {
 
 export class NativeNotifier implements INotifier {
   notify(message: string): boolean {
-    new Notification()
-      .title("Ticket Alert")
-      .body(message)
-      .show();
+    Deno.run({
+      cmd: [
+        "notify-send",
+        '-t "60000"',
+        '-a "Train Alert"',
+        "Train Alert",
+        message,
+      ],
+    });
     return true;
   }
 }

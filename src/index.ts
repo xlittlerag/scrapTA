@@ -10,6 +10,7 @@ import { Query, TicketStatus } from "../lib/types.ts";
 import { citiesMap } from "../lib/utils.ts";
 import input from "../input.json" assert { type: "json" };
 import buildQueries from "../lib/queryBuilder.ts";
+import os from "https://deno.land/x/dos@v0.11.0/mod.ts";
 
 const POST_URL = Deno.env.get("POST_URL");
 if (!(POST_URL)) {
@@ -19,8 +20,8 @@ if (!(POST_URL)) {
 }
 const notifiers: INotifier[] = [
   new ConsoleNotifier(),
-  new NativeNotifier(),
 ];
+os.platform() == "linux" && notifiers.push(new NativeNotifier());
 POST_URL && notifiers.push(new PostNotifier(POST_URL));
 
 const queries: Query[] = buildQueries(input);
